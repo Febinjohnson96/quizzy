@@ -10,11 +10,20 @@
 class $AssetsSvgGen {
   const $AssetsSvgGen();
 
+  /// File path: assets/svg/biology.svg
+  String get biology => 'assets/svg/biology.svg';
+
+  /// File path: assets/svg/chemistry.svg
+  String get chemistry => 'assets/svg/chemistry.svg';
+
   /// File path: assets/svg/logo.svg
   String get logo => 'assets/svg/logo.svg';
 
+  /// File path: assets/svg/physics.svg
+  String get physics => 'assets/svg/physics.svg';
+
   /// List of all assets
-  List<String> get values => [logo];
+  List<String> get values => [biology, chemistry, logo, physics];
 }
 
 class Assets {

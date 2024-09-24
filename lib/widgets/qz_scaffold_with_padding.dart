@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class QzScaffold extends StatelessWidget {
-  const QzScaffold({super.key, required this.child, this.bottomNavigationBar});
+class QzScaffoldWithPadding extends StatelessWidget {
+  const QzScaffoldWithPadding({super.key, required this.child, this.bottomNavigationBar});
 
   final Widget child;
   final Widget? bottomNavigationBar;

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quizzy/presentation/home/cubit/home_cubit.dart';
 import 'package:quizzy/presentation/home/ui/home_screen.dart';
 
 class HomeUi extends StatelessWidget {
@@ -6,6 +8,9 @@ class HomeUi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const HomeScreen();
+    return BlocProvider<HomeCubit>(
+      create: (context) => HomeCubit()..onLoadHome(),
+      child: const HomeScreen(),
+    );
   }
 }
