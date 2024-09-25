@@ -19,41 +19,49 @@ class HomeScreen extends StatelessWidget {
         width: double.infinity,
         child: ColoredBox(
           color: AppColors.deepPurple,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Subjects'.toUpperCase(),
-                style: AppTypography.satoshi22w4700
-                    .copyWith(color: AppColors.white),
-              ),
-              Expanded(
-                  child: Align(
-                alignment: Alignment.center,
-                child: BlocBuilder<HomeCubit, HomeState>(
-                  builder: (context, state) {
-                    return GridView.builder(
-                      shrinkWrap: true,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2),
-                      itemBuilder: (context, index) => Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            context.push(RouteName.start);
-                          },
-                          child: SubjectCard(
-                            image: state.subjects?[index].image ?? '',
-                            title: state.subjects?[index].name ?? '',
+          child: BlocListener<HomeCubit, HomeState>(
+            listener: (context, state) {
+              if (state.selectedsubject != null) {
+                context.push(RouteName.start, extra: state.selectedsubject);
+              }
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Subjects'.toUpperCase(),
+                  style: AppTypography.satoshi22w4700
+                      .copyWith(color: AppColors.white),
+                ),
+                Expanded(
+                    child: Align(
+                  alignment: Alignment.center,
+                  child: BlocBuilder<HomeCubit, HomeState>(
+                    builder: (context, state) {
+                      return GridView.builder(
+                        shrinkWrap: true,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2),
+                        itemBuilder: (context, index) => Center(
+                          child: GestureDetector(
+                            onTap: () {
+                              context.read<HomeCubit>().onClickedSubject(
+                                  state.subjects?[index].name ?? '');
+                            },
+                            child: SubjectCard(
+                              image: state.subjects?[index].image ?? '',
+                              title: state.subjects?[index].name ?? '',
+                            ),
                           ),
                         ),
-                      ),
-                      itemCount: state.subjects?.length,
-                    );
-                  },
-                ),
-              )),
-            ],
+                        itemCount: state.subjects?.length,
+                      );
+                    },
+                  ),
+                )),
+              ],
+            ),
           ),
         ),
       ),

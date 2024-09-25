@@ -16,7 +16,10 @@ final GoRouter appRoutes = GoRouter(routes: [
   ),
   GoRoute(
     path: RouteName.start,
-    builder: (context, state) => const StartUi(),
+    builder: (context, state) {
+      final subjectName = state.extra as String;
+      return StartUi(subjectName: subjectName);
+    },
   ),
   GoRoute(
     path: RouteName.quiz,
