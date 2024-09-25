@@ -11,4 +11,8 @@ class HomeCubit extends Cubit<HomeState> {
   void onLoadHome() async {
     emit(state.copyWith(subjects: subjects));
   }
+
+  void onClickedSubject(String subject) {
+    
+  }
 }
