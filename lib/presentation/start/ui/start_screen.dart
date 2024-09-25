@@ -42,7 +42,8 @@ class StartScreen extends StatelessWidget {
                   alignment: Alignment.bottomCenter,
                   child: AppButton(
                     title: "Start Quiz ?",
-                    callback: ()=> context.push(RouteName.quiz),
+                    callback: () =>
+                        context.push(RouteName.quiz, extra: subjectName),
                   ),
                 ),
               ],

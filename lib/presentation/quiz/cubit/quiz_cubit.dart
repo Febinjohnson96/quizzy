@@ -8,7 +8,15 @@ part 'quiz_cubit.freezed.dart';
 class QuizCubit extends Cubit<QuizState> {
   QuizCubit() : super(QuizState.initial());
 
-  void onLoadQuiz() {
-    emit(state.copyWith(quiz: physics));
+  void onLoadQuiz(String? subjectName) {
+    if (subjectName == "Physics") {
+      emit(state.copyWith(quiz: physics));
+    } else if (subjectName == "Chemistry") {
+      emit(state.copyWith(quiz: chemistry));
+    } else if (subjectName == "Biology") {
+      emit(state.copyWith(quiz: biology));
+    } else {
+      emit(state.copyWith(quiz: physics));
+    }
   }
 }
