@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quizzy/core/config/app_colors.dart';
 import 'package:quizzy/core/config/app_typography.dart';
+import 'package:quizzy/core/config/route_name.dart';
 import 'package:quizzy/gen/assets.gen.dart';
 import 'package:quizzy/widgets/app_button.dart';
 import 'package:quizzy/widgets/qz_scaffold_without_padding.dart';
@@ -35,10 +37,11 @@ class StartScreen extends StatelessWidget {
                       .copyWith(color: AppColors.white),
                 ),
                 const Spacer(),
-                const Align(
+                 Align(
                   alignment: Alignment.bottomCenter,
                   child: AppButton(
                     title: "Start Quiz ?",
+                    callback: ()=> context.push(RouteName.quiz),
                   ),
                 ),
               ],
