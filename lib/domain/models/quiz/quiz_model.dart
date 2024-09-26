@@ -28,6 +28,11 @@ List<QuizModel> physics = [
     answer: '19.6 meters',
     options: ['9.8 meters', '19.6 meters', '39.2 meters', '7 meters'],
   ),
+  QuizModel(
+    question: 'You Have SuccessFully Completed\nThe physics Quiz.',
+    answer: ' ',
+    options: [],
+  ),
 ];
 
 List<QuizModel> chemistry = [
@@ -45,6 +50,11 @@ List<QuizModel> chemistry = [
     question: 'OH- can be described as which polyatomic ion?',
     answer: 'Hydroxide',
     options: ['Phosphate', 'Hydroxide', 'Helium', 'Nitrogen'],
+  ),
+  QuizModel(
+    question: 'You Have SuccessFully Completed\nThe chemistry Quiz.',
+    answer: ' ',
+    options: [],
   ),
 ];
 
@@ -69,5 +79,10 @@ List<QuizModel> biology = [
       'A large group of molecules',
       'An evolutionary unit'
     ],
+  ),
+  QuizModel(
+    question: 'You Have SuccessFully Completed\nThe biology Quiz.',
+    answer: ' ',
+    options: [],
   ),
 ];

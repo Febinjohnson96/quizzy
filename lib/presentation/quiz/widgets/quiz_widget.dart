@@ -3,19 +3,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:quizzy/core/config/app_colors.dart';
 import 'package:quizzy/core/config/app_typography.dart';
 import 'package:quizzy/domain/models/quiz/quiz_model.dart';
-import 'package:quizzy/utils/app_logger.dart';
-
 class QuizWidget extends StatelessWidget {
-  const QuizWidget({super.key, this.quizObject});
+  const QuizWidget({super.key, this.quizObject, this.onAnswerSelected});
 
   final QuizModel? quizObject;
+  final VoidCallback? onAnswerSelected;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 360.w,
+      width: 350.w,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(quizObject?.question ?? '',
           textAlign: TextAlign.center,
@@ -33,8 +33,8 @@ class QuizWidget extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemBuilder: (context, index) => GestureDetector(
-                        onTap: () =>
-                            AppLogger.debuglog(quizObject?.options[index] ?? ''),
+                        onTap: () => onAnswerSelected?.call(),
+                            // AppLogger.debuglog(quizObject?.options[index] ?? ''),
                         child: Container(
                           padding: const EdgeInsets.all(12),
                           width: double.infinity,
