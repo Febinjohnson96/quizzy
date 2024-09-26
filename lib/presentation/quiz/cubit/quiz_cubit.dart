@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:quizzy/domain/models/quiz/quiz_model.dart';
+import 'package:quizzy/utils/app_logger.dart';
 
 part 'quiz_state.dart';
 part 'quiz_cubit.freezed.dart';
@@ -17,6 +18,20 @@ class QuizCubit extends Cubit<QuizState> {
       emit(state.copyWith(quiz: biology));
     } else {
       emit(state.copyWith(quiz: physics));
+    }
+  }
+
+  void selectAnswer(String answer, int index) {
+    AppLogger.debuglog("answer 25 $answer");
+    emit(state.copyWith(correctAnswer: false, currentIndex: 0));
+    final answerFromState = state.quiz?[index].answer;
+    if (answer == answerFromState) {
+      AppLogger.debuglog("ans $answer stAns $answerFromState");
+      emit(state.copyWith(
+          correctAnswer: answer == answerFromState, currentIndex: index));
+    }else{
+      AppLogger.debuglog("line 33");
+      emit(state.copyWith(correctAnswer: false,));
     }
   }
 }

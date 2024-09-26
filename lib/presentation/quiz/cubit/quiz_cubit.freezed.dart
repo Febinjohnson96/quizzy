@@ -17,6 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$QuizState {
   List<QuizModel>? get quiz => throw _privateConstructorUsedError;
+  bool? get correctAnswer => throw _privateConstructorUsedError;
+  int? get currentIndex => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $QuizStateCopyWith<QuizState> get copyWith =>
@@ -28,7 +30,7 @@ abstract class $QuizStateCopyWith<$Res> {
   factory $QuizStateCopyWith(QuizState value, $Res Function(QuizState) then) =
       _$QuizStateCopyWithImpl<$Res, QuizState>;
   @useResult
-  $Res call({List<QuizModel>? quiz});
+  $Res call({List<QuizModel>? quiz, bool? correctAnswer, int? currentIndex});
 }
 
 /// @nodoc
@@ -45,12 +47,22 @@ class _$QuizStateCopyWithImpl<$Res, $Val extends QuizState>
   @override
   $Res call({
     Object? quiz = freezed,
+    Object? correctAnswer = freezed,
+    Object? currentIndex = freezed,
   }) {
     return _then(_value.copyWith(
       quiz: freezed == quiz
           ? _value.quiz
           : quiz // ignore: cast_nullable_to_non_nullable
               as List<QuizModel>?,
+      correctAnswer: freezed == correctAnswer
+          ? _value.correctAnswer
+          : correctAnswer // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      currentIndex: freezed == currentIndex
+          ? _value.currentIndex
+          : currentIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -63,7 +75,7 @@ abstract class _$$QuizStateImplCopyWith<$Res>
       __$$QuizStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<QuizModel>? quiz});
+  $Res call({List<QuizModel>? quiz, bool? correctAnswer, int? currentIndex});
 }
 
 /// @nodoc
@@ -78,12 +90,22 @@ class __$$QuizStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? quiz = freezed,
+    Object? correctAnswer = freezed,
+    Object? currentIndex = freezed,
   }) {
     return _then(_$QuizStateImpl(
       quiz: freezed == quiz
           ? _value._quiz
           : quiz // ignore: cast_nullable_to_non_nullable
               as List<QuizModel>?,
+      correctAnswer: freezed == correctAnswer
+          ? _value.correctAnswer
+          : correctAnswer // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      currentIndex: freezed == currentIndex
+          ? _value.currentIndex
+          : currentIndex // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -91,7 +113,9 @@ class __$$QuizStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$QuizStateImpl implements _QuizState {
-  const _$QuizStateImpl({final List<QuizModel>? quiz}) : _quiz = quiz;
+  const _$QuizStateImpl(
+      {final List<QuizModel>? quiz, this.correctAnswer, this.currentIndex})
+      : _quiz = quiz;
 
   final List<QuizModel>? _quiz;
   @override
@@ -104,8 +128,13 @@ class _$QuizStateImpl implements _QuizState {
   }
 
   @override
+  final bool? correctAnswer;
+  @override
+  final int? currentIndex;
+
+  @override
   String toString() {
-    return 'QuizState(quiz: $quiz)';
+    return 'QuizState(quiz: $quiz, correctAnswer: $correctAnswer, currentIndex: $currentIndex)';
   }
 
   @override
@@ -113,12 +142,16 @@ class _$QuizStateImpl implements _QuizState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$QuizStateImpl &&
-            const DeepCollectionEquality().equals(other._quiz, _quiz));
+            const DeepCollectionEquality().equals(other._quiz, _quiz) &&
+            (identical(other.correctAnswer, correctAnswer) ||
+                other.correctAnswer == correctAnswer) &&
+            (identical(other.currentIndex, currentIndex) ||
+                other.currentIndex == currentIndex));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_quiz));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_quiz), correctAnswer, currentIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -128,10 +161,17 @@ class _$QuizStateImpl implements _QuizState {
 }
 
 abstract class _QuizState implements QuizState {
-  const factory _QuizState({final List<QuizModel>? quiz}) = _$QuizStateImpl;
+  const factory _QuizState(
+      {final List<QuizModel>? quiz,
+      final bool? correctAnswer,
+      final int? currentIndex}) = _$QuizStateImpl;
 
   @override
   List<QuizModel>? get quiz;
+  @override
+  bool? get correctAnswer;
+  @override
+  int? get currentIndex;
   @override
   @JsonKey(ignore: true)
   _$$QuizStateImplCopyWith<_$QuizStateImpl> get copyWith =>
