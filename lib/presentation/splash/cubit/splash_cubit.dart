@@ -10,6 +10,6 @@ class SplashCubit extends Cubit<SplashState> {
 
   void onLoadSplash() async {
     await Future.delayed(const Duration(seconds: 2));
-    emit(state.copyWith(routeName: RouteName.home));
+    emit(state.copyWith(routeName: RouteName.login));
   }
 }

@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:quizzy/core/config/route_name.dart';
 import 'package:quizzy/presentation/home/home_ui.dart';
+import 'package:quizzy/presentation/login/login_ui.dart';
 import 'package:quizzy/presentation/quiz/quiz_ui.dart';
 import 'package:quizzy/presentation/splash/splash_ui.dart';
 import 'package:quizzy/presentation/start/start_ui.dart';
@@ -27,5 +28,9 @@ final GoRouter appRoutes = GoRouter(routes: [
       final subjectName = state.extra as String;
       return QuizUi(subjectName: subjectName);
     },
-  )
+  ),
+  GoRoute(
+    path: RouteName.login,
+    builder: (context, state) => const LoginUi(),
+  ),
 ]);
