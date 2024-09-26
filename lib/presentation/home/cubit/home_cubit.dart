@@ -13,6 +13,6 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   void onClickedSubject(String subject) {
-    
+    emit(state.copyWith(selectedsubject: subject));
   }
 }

@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomeState {
   List<SubjectModel>? get subjects => throw _privateConstructorUsedError;
+  String? get selectedsubject => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
@@ -28,7 +29,7 @@ abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
       _$HomeStateCopyWithImpl<$Res, HomeState>;
   @useResult
-  $Res call({List<SubjectModel>? subjects});
+  $Res call({List<SubjectModel>? subjects, String? selectedsubject});
 }
 
 /// @nodoc
@@ -45,12 +46,17 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   @override
   $Res call({
     Object? subjects = freezed,
+    Object? selectedsubject = freezed,
   }) {
     return _then(_value.copyWith(
       subjects: freezed == subjects
           ? _value.subjects
           : subjects // ignore: cast_nullable_to_non_nullable
               as List<SubjectModel>?,
+      selectedsubject: freezed == selectedsubject
+          ? _value.selectedsubject
+          : selectedsubject // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -63,7 +69,7 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       __$$HomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<SubjectModel>? subjects});
+  $Res call({List<SubjectModel>? subjects, String? selectedsubject});
 }
 
 /// @nodoc
@@ -78,12 +84,17 @@ class __$$HomeStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? subjects = freezed,
+    Object? selectedsubject = freezed,
   }) {
     return _then(_$HomeStateImpl(
       subjects: freezed == subjects
           ? _value._subjects
           : subjects // ignore: cast_nullable_to_non_nullable
               as List<SubjectModel>?,
+      selectedsubject: freezed == selectedsubject
+          ? _value.selectedsubject
+          : selectedsubject // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -91,7 +102,8 @@ class __$$HomeStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HomeStateImpl implements _HomeState {
-  const _$HomeStateImpl({final List<SubjectModel>? subjects})
+  const _$HomeStateImpl(
+      {final List<SubjectModel>? subjects, this.selectedsubject})
       : _subjects = subjects;
 
   final List<SubjectModel>? _subjects;
@@ -105,8 +117,11 @@ class _$HomeStateImpl implements _HomeState {
   }
 
   @override
+  final String? selectedsubject;
+
+  @override
   String toString() {
-    return 'HomeState(subjects: $subjects)';
+    return 'HomeState(subjects: $subjects, selectedsubject: $selectedsubject)';
   }
 
   @override
@@ -114,12 +129,14 @@ class _$HomeStateImpl implements _HomeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HomeStateImpl &&
-            const DeepCollectionEquality().equals(other._subjects, _subjects));
+            const DeepCollectionEquality().equals(other._subjects, _subjects) &&
+            (identical(other.selectedsubject, selectedsubject) ||
+                other.selectedsubject == selectedsubject));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_subjects));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_subjects), selectedsubject);
 
   @JsonKey(ignore: true)
   @override
@@ -129,11 +146,14 @@ class _$HomeStateImpl implements _HomeState {
 }
 
 abstract class _HomeState implements HomeState {
-  const factory _HomeState({final List<SubjectModel>? subjects}) =
-      _$HomeStateImpl;
+  const factory _HomeState(
+      {final List<SubjectModel>? subjects,
+      final String? selectedsubject}) = _$HomeStateImpl;
 
   @override
   List<SubjectModel>? get subjects;
+  @override
+  String? get selectedsubject;
   @override
   @JsonKey(ignore: true)
   _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>

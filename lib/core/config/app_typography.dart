@@ -4,6 +4,10 @@ import 'package:quizzy/gen/fonts.gen.dart';
 
 class AppTypography {
   AppTypography._();
+    static TextStyle satoshi14w600 = TextStyle(
+      fontFamily: FontFamily.satoshi,
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w600);
   static TextStyle satoshi17w600 = TextStyle(
       fontFamily: FontFamily.satoshi,
       fontSize: 17.sp,
