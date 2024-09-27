@@ -1,8 +1,10 @@
 import 'package:go_router/go_router.dart';
 import 'package:quizzy/core/config/route_name.dart';
+import 'package:quizzy/data/params/score_screen_params.dart';
 import 'package:quizzy/presentation/home/home_ui.dart';
 import 'package:quizzy/presentation/login/login_ui.dart';
 import 'package:quizzy/presentation/quiz/quiz_ui.dart';
+import 'package:quizzy/presentation/score/score_ui.dart';
 import 'package:quizzy/presentation/splash/splash_ui.dart';
 import 'package:quizzy/presentation/start/start_ui.dart';
 
@@ -33,4 +35,10 @@ final GoRouter appRoutes = GoRouter(routes: [
     path: RouteName.login,
     builder: (context, state) => const LoginUi(),
   ),
+  GoRoute(
+      path: RouteName.score,
+      builder: (context, state) {
+        final score = state.extra as ScoreScreenParams;
+        return ScoreUi(params: score);
+      }),
 ]);

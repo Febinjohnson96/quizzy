@@ -19,6 +19,9 @@ mixin _$QuizState {
   List<QuizModel>? get quiz => throw _privateConstructorUsedError;
   bool? get correctAnswer => throw _privateConstructorUsedError;
   int? get currentIndex => throw _privateConstructorUsedError;
+  int? get score => throw _privateConstructorUsedError;
+  QuizModel? get wrongQuestion => throw _privateConstructorUsedError;
+  bool? get lastItem => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $QuizStateCopyWith<QuizState> get copyWith =>
@@ -30,7 +33,13 @@ abstract class $QuizStateCopyWith<$Res> {
   factory $QuizStateCopyWith(QuizState value, $Res Function(QuizState) then) =
       _$QuizStateCopyWithImpl<$Res, QuizState>;
   @useResult
-  $Res call({List<QuizModel>? quiz, bool? correctAnswer, int? currentIndex});
+  $Res call(
+      {List<QuizModel>? quiz,
+      bool? correctAnswer,
+      int? currentIndex,
+      int? score,
+      QuizModel? wrongQuestion,
+      bool? lastItem});
 }
 
 /// @nodoc
@@ -49,6 +58,9 @@ class _$QuizStateCopyWithImpl<$Res, $Val extends QuizState>
     Object? quiz = freezed,
     Object? correctAnswer = freezed,
     Object? currentIndex = freezed,
+    Object? score = freezed,
+    Object? wrongQuestion = freezed,
+    Object? lastItem = freezed,
   }) {
     return _then(_value.copyWith(
       quiz: freezed == quiz
@@ -63,6 +75,18 @@ class _$QuizStateCopyWithImpl<$Res, $Val extends QuizState>
           ? _value.currentIndex
           : currentIndex // ignore: cast_nullable_to_non_nullable
               as int?,
+      score: freezed == score
+          ? _value.score
+          : score // ignore: cast_nullable_to_non_nullable
+              as int?,
+      wrongQuestion: freezed == wrongQuestion
+          ? _value.wrongQuestion
+          : wrongQuestion // ignore: cast_nullable_to_non_nullable
+              as QuizModel?,
+      lastItem: freezed == lastItem
+          ? _value.lastItem
+          : lastItem // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -75,7 +99,13 @@ abstract class _$$QuizStateImplCopyWith<$Res>
       __$$QuizStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<QuizModel>? quiz, bool? correctAnswer, int? currentIndex});
+  $Res call(
+      {List<QuizModel>? quiz,
+      bool? correctAnswer,
+      int? currentIndex,
+      int? score,
+      QuizModel? wrongQuestion,
+      bool? lastItem});
 }
 
 /// @nodoc
@@ -92,6 +122,9 @@ class __$$QuizStateImplCopyWithImpl<$Res>
     Object? quiz = freezed,
     Object? correctAnswer = freezed,
     Object? currentIndex = freezed,
+    Object? score = freezed,
+    Object? wrongQuestion = freezed,
+    Object? lastItem = freezed,
   }) {
     return _then(_$QuizStateImpl(
       quiz: freezed == quiz
@@ -106,6 +139,18 @@ class __$$QuizStateImplCopyWithImpl<$Res>
           ? _value.currentIndex
           : currentIndex // ignore: cast_nullable_to_non_nullable
               as int?,
+      score: freezed == score
+          ? _value.score
+          : score // ignore: cast_nullable_to_non_nullable
+              as int?,
+      wrongQuestion: freezed == wrongQuestion
+          ? _value.wrongQuestion
+          : wrongQuestion // ignore: cast_nullable_to_non_nullable
+              as QuizModel?,
+      lastItem: freezed == lastItem
+          ? _value.lastItem
+          : lastItem // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -114,7 +159,12 @@ class __$$QuizStateImplCopyWithImpl<$Res>
 
 class _$QuizStateImpl implements _QuizState {
   const _$QuizStateImpl(
-      {final List<QuizModel>? quiz, this.correctAnswer, this.currentIndex})
+      {final List<QuizModel>? quiz,
+      this.correctAnswer,
+      this.currentIndex,
+      this.score,
+      this.wrongQuestion,
+      this.lastItem})
       : _quiz = quiz;
 
   final List<QuizModel>? _quiz;
@@ -131,10 +181,16 @@ class _$QuizStateImpl implements _QuizState {
   final bool? correctAnswer;
   @override
   final int? currentIndex;
+  @override
+  final int? score;
+  @override
+  final QuizModel? wrongQuestion;
+  @override
+  final bool? lastItem;
 
   @override
   String toString() {
-    return 'QuizState(quiz: $quiz, correctAnswer: $correctAnswer, currentIndex: $currentIndex)';
+    return 'QuizState(quiz: $quiz, correctAnswer: $correctAnswer, currentIndex: $currentIndex, score: $score, wrongQuestion: $wrongQuestion, lastItem: $lastItem)';
   }
 
   @override
@@ -146,12 +202,23 @@ class _$QuizStateImpl implements _QuizState {
             (identical(other.correctAnswer, correctAnswer) ||
                 other.correctAnswer == correctAnswer) &&
             (identical(other.currentIndex, currentIndex) ||
-                other.currentIndex == currentIndex));
+                other.currentIndex == currentIndex) &&
+            (identical(other.score, score) || other.score == score) &&
+            (identical(other.wrongQuestion, wrongQuestion) ||
+                other.wrongQuestion == wrongQuestion) &&
+            (identical(other.lastItem, lastItem) ||
+                other.lastItem == lastItem));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_quiz), correctAnswer, currentIndex);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_quiz),
+      correctAnswer,
+      currentIndex,
+      score,
+      wrongQuestion,
+      lastItem);
 
   @JsonKey(ignore: true)
   @override
@@ -164,7 +231,10 @@ abstract class _QuizState implements QuizState {
   const factory _QuizState(
       {final List<QuizModel>? quiz,
       final bool? correctAnswer,
-      final int? currentIndex}) = _$QuizStateImpl;
+      final int? currentIndex,
+      final int? score,
+      final QuizModel? wrongQuestion,
+      final bool? lastItem}) = _$QuizStateImpl;
 
   @override
   List<QuizModel>? get quiz;
@@ -172,6 +242,12 @@ abstract class _QuizState implements QuizState {
   bool? get correctAnswer;
   @override
   int? get currentIndex;
+  @override
+  int? get score;
+  @override
+  QuizModel? get wrongQuestion;
+  @override
+  bool? get lastItem;
   @override
   @JsonKey(ignore: true)
   _$$QuizStateImplCopyWith<_$QuizStateImpl> get copyWith =>

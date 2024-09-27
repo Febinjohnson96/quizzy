@@ -5,4 +5,5 @@ class RouteName{
   static const String home = '/home';
   static const String start = '/start';
   static const String quiz = '/quiz';
+  static const String score = '/score';
 }
