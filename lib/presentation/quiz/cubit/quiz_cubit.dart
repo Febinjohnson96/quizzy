@@ -28,10 +28,18 @@ class QuizCubit extends Cubit<QuizState> {
     if (answer == answerFromState) {
       AppLogger.debuglog("ans $answer stAns $answerFromState");
       emit(state.copyWith(
-          correctAnswer: answer == answerFromState, currentIndex: index));
-    }else{
+          correctAnswer: true,
+          currentIndex: index,
+          score: state.score! + 10));
+    } else {
       AppLogger.debuglog("line 33");
-      emit(state.copyWith(correctAnswer: false,));
+      emit(state.copyWith(
+          correctAnswer: false,
+          currentIndex: index,
+          wrongQuestion: state.quiz?[index]));
+    }
+    if (index == state.quiz!.length - 1) {
+      emit(state.copyWith(lastItem: true));
     }
   }
 }

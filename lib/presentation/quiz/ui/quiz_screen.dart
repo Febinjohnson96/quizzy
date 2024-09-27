@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:go_router/go_router.dart';
 import 'package:quizzy/core/config/app_colors.dart';
+import 'package:quizzy/core/config/route_name.dart';
+import 'package:quizzy/data/params/score_screen_params.dart';
 import 'package:quizzy/presentation/quiz/cubit/quiz_cubit.dart';
 import 'package:quizzy/presentation/quiz/widgets/quiz_widget.dart';
 import 'package:quizzy/widgets/qz_scaffold_without_padding.dart';
@@ -42,20 +44,25 @@ class _QuizScreenState extends State<QuizScreen> {
           if (state.correctAnswer != null) {
             int currentIndex = state.currentIndex ?? 0;
 
-            // If the answer is correct, scroll to the next index
+            // _scrollToNextIndex(currentIndex);
             if (state.correctAnswer == true) {
               _scrollToNextIndex(currentIndex);
-            } else {
-              WidgetsBinding.instance.addPostFrameCallback((_) {
-                Fluttertoast.showToast(
-                  msg: "Wrong answer",
-                  toastLength: Toast.LENGTH_SHORT,
-                  gravity: ToastGravity.BOTTOM,
-                  backgroundColor: Colors.black.withOpacity(0.7),
-                  textColor: Colors.white,
-                  fontSize: 16.0,
-                );
-              });
+            } else if (state.lastItem == true) {
+              context.push(RouteName.score,
+                  extra: ScoreScreenParams(
+                    score: state.score ?? 0,
+                    wrongQuestion: state.wrongQuestion,
+                  ));
+              // WidgetsBinding.instance.addPostFrameCallback((_) {
+              //   Fluttertoast.showToast(
+              //     msg: "Wrong answer",
+              //     toastLength: Toast.LENGTH_SHORT,
+              //     gravity: ToastGravity.BOTTOM,
+              //     backgroundColor: Colors.black.withOpacity(0.7),
+              //     textColor: Colors.white,
+              //     fontSize: 16.0,
+              //   );
+              // });
             }
           }
         },
